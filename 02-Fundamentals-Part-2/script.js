@@ -127,7 +127,7 @@ const ages = [
   calcAge(years[years.length - 1]),
 ]; */
 
-const friends = ["Mikey", "Steve", "Harry"];
+/* const friends = ["Mikey", "Steve", "Harry"];
 
 // Add element
 const newLenght = friends.push("Paul");
@@ -175,3 +175,42 @@ const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
 console.log(tips);
 
 const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+ */
+
+const benzObject = {
+  firstName: "Suppasan",
+  lastName: "Chaianantakul",
+  age: 2024 - 1993,
+  job: "ผู้นิรทุกข์",
+  friends: ["Michael", "Peter", "Steven"],
+};
+
+console.log(benzObject);
+console.log(benzObject.firstName);
+console.log(benzObject["firstName"]);
+
+const nameKey = "Name";
+console.log(benzObject["first" + nameKey]);
+console.log(benzObject["last" + nameKey]);
+
+/* const interestedIn = prompt(
+  "What do you want to know about Benz? choose between fistName, lanstName, age, job and friend"
+);
+
+if (benzObject[interestedIn]) {
+  console.log(benzObject[interestedIn]);
+} else {
+  console.log(`Wrong request! no ${interestedIn} detail`);
+}
+ */
+benzObject.location = "Thailand";
+benzObject.salary = "90,000 $/month";
+
+console.log(benzObject);
+
+// Challenge
+// Benz has 3 friends, and his best friend is called "Michael"
+
+console.log(
+  `${benzObject.firstName} has ${benzObject.friends.length} friends, and his best friend is called "${benzObject.friends[0]}"`
+);
