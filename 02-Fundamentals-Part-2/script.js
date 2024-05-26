@@ -177,7 +177,7 @@ console.log(tips);
 const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
  */
 
-const benzObject = {
+/* const benzObject = {
   firstName: "Suppasan",
   lastName: "Chaianantakul",
   age: 2024 - 1993,
@@ -191,7 +191,7 @@ console.log(benzObject["firstName"]);
 
 const nameKey = "Name";
 console.log(benzObject["first" + nameKey]);
-console.log(benzObject["last" + nameKey]);
+console.log(benzObject["last" + nameKey]); */
 
 /* const interestedIn = prompt(
   "What do you want to know about Benz? choose between fistName, lanstName, age, job and friend"
@@ -203,14 +203,86 @@ if (benzObject[interestedIn]) {
   console.log(`Wrong request! no ${interestedIn} detail`);
 }
  */
-benzObject.location = "Thailand";
-benzObject.salary = "90,000 $/month";
+/* benzObject.location = "Thailand";
+benzObject.salary = "90,000 $/month"; */
 
-console.log(benzObject);
+/* console.log(benzObject); */
 
 // Challenge
 // Benz has 3 friends, and his best friend is called "Michael"
 
-console.log(
+/* console.log(
   `${benzObject.firstName} has ${benzObject.friends.length} friends, and his best friend is called "${benzObject.friends[0]}"`
-);
+); */
+
+/* const benzObject = {
+  firstName: "Suppasan",
+  lastName: "Chaianantakul",
+  birthYear: 1993,
+  job: "ผู้นิรทุกข์",
+  friends: ["Michael", "Peter", "Steven"],
+  hasDriversLicense: true,
+
+  calcAge: function () {
+    this.age = 2024 - this.birthYear;
+    return this.age;
+  },
+
+  getSummary: function () {
+    console.log(
+      `${this.firstName} ${this.lastName} is a ${this.calcAge()}-year old ${
+        this.job
+      }, and he has ${this.hasDriversLicense ? "a" : "no"} driver's license`
+    );
+    return;
+  },
+};
+
+// Challenge
+// "Suppasan Chaianantakul is a 31-year old ผู้นิรทุกข์, and he has a driver's license"
+
+benzObject.getSummary();
+ */
+
+/* for (let rep = 1; rep <= 30; rep++) {
+  console.log(`Lifting weights repetition ${rep} 🏋️‍♀️`);
+} */
+
+const benzArray = [
+  "Suppasan",
+  "Chaianantakul",
+  2024 - 1993,
+  "Polymath",
+  ["Michael", "Peter", "Steven"],
+  true,
+];
+
+for (let i = 0; i < benzArray.length; i++) {
+  console.log(benzArray[i], typeof benzArray[i]);
+}
+
+console.log("\n");
+
+const years = [1990, 1991, 1992, 1993, 1994, 1995];
+const age = [];
+
+for (let i = 0; i < years.length; i++) {
+  age.push(2024 - years[i]);
+}
+
+console.log(age);
+
+console.log("\n");
+
+// continue and break
+for (let i = 0; i < benzArray.length; i++) {
+  if (typeof benzArray[i] !== "string") continue;
+  console.log(benzArray[i]);
+}
+
+console.log("\n");
+
+for (let i = 0; i < years.length; i++) {
+  console.log(years[i]);
+  if (years[i] === 1993) break;
+}
