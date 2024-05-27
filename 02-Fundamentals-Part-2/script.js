@@ -248,7 +248,7 @@ benzObject.getSummary();
   console.log(`Lifting weights repetition ${rep} 🏋️‍♀️`);
 } */
 
-const benzArray = [
+/* const benzArray = [
   "Suppasan",
   "Chaianantakul",
   2024 - 1993,
@@ -285,4 +285,53 @@ console.log("\n");
 for (let i = 0; i < years.length; i++) {
   console.log(years[i]);
   if (years[i] === 1993) break;
+} */
+
+/* const benzArray = [
+  "Suppasan",
+  "Chaianantakul",
+  2024 - 1993,
+  "Polymath",
+  ["Michael", "Peter", "Steven"],
+  true,
+];
+
+for (let i = benzArray.length - 1; i >= 0; i--) {
+  console.log(Number(i), String(benzArray[i]));
+} */
+
+/* const exercise = ["Bench Press", "Squat", "Deadlift", "Leg Press"];
+
+for (let i = 0; i < exercise.length; i++) {
+  console.log(`Exercise "${exercise[i]}"`);
+
+  const set = 4;
+  for (let j = 1; j <= set; j++) {
+    const rep = 12;
+    const repAction = [];
+
+    for (let k = 1; k <= rep; k++) {
+      repAction.push(`push${k}`);
+    }
+
+    console.log(`set${j}`, "=", String(repAction));
+  }
+
+  console.log("\n");
+} */
+
+/* for (let rep = 1; rep <= 10; rep++) {
+  console.log(`for : Lifting weights repettition ${rep} 🏋️‍♀️`);
+} */
+
+let rep = 1;
+while (rep <= 10) {
+  console.log(`While : Lifting weights repettition ${rep} 🏋️‍♀️`);
+  rep++;
+}
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+while (dice !== 6) {
+  dice = Math.trunc(Math.random() * 6) + 1;
+  console.log(dice, dice === 6 && "Loop end here");
 }
