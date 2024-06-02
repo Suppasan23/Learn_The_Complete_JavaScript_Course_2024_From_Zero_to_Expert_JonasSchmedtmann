@@ -36,9 +36,9 @@ function newGame() {
 
 function whoActive() {
   if (player1.classList.contains("player--active")) {
-    return 0;
+    return arrayOfSection[0];
   } else if (player2.classList.contains("player--active")) {
-    return 1;
+    return arrayOfSection[1];
   }
 }
 
@@ -48,7 +48,7 @@ function togglePlayer() {
 }
 
 function winnerYet() {
-  if (arrayOfSection[whoActive()][0].classList.contains("player--winner")) {
+  if (whoActive()[0].classList.contains("player--winner")) {
     return true;
   } else {
     return false;
@@ -65,25 +65,24 @@ rollDiceBTN.addEventListener("click", () => {
   diceImage.classList.remove("hidden");
 
   if (randomNumber === 1) {
-    arrayOfSection[whoActive()][3].textContent = 0;
+    whoActive()[3].textContent = 0;
     togglePlayer();
   } else {
-    arrayOfSection[whoActive()][3].textContent =
-      Number(arrayOfSection[whoActive()][3].textContent) + randomNumber;
+    whoActive()[3].textContent =
+      Number(whoActive()[3].textContent) + randomNumber;
   }
 });
 
 holdBTN.addEventListener("click", () => {
   if (winnerYet()) return;
 
-  arrayOfSection[whoActive()][2].textContent =
-    Number(arrayOfSection[whoActive()][2].textContent) +
-    Number(arrayOfSection[whoActive()][3].textContent);
+  whoActive()[2].textContent =
+    Number(whoActive()[2].textContent) + Number(whoActive()[3].textContent);
 
-  arrayOfSection[whoActive()][3].textContent = 0;
+  whoActive()[3].textContent = 0;
 
-  if (arrayOfSection[whoActive()][2].textContent >= 100) {
-    arrayOfSection[whoActive()][0].classList.add("player--winner");
+  if (whoActive()[2].textContent >= 100) {
+    whoActive()[0].classList.add("player--winner");
     return;
   }
 
