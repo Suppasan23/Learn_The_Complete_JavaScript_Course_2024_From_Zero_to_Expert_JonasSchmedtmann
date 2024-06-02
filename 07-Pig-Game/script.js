@@ -1,9 +1,13 @@
 "use strict";
 
 const newGameBTN = document.querySelector(".btn--new");
-const diceImage = document.querySelector(".dice");
-const rollDiceBTN = document.querySelector(".btn--roll");
-const holdBTN = document.querySelector(".btn--hold");
+
+const diceImage1 = document.querySelector(".dice1");
+const diceImage2 = document.querySelector(".dice2");
+const rollDiceBTN1 = document.querySelector(".btn--roll1");
+const rollDiceBTN2 = document.querySelector(".btn--roll2");
+const holdBTN1 = document.querySelector(".btn--hold1");
+const holdBTN2 = document.querySelector(".btn--hold2");
 
 const player1 = document.querySelector(".player--1");
 const player2 = document.querySelector(".player--2");
@@ -14,9 +18,29 @@ const totalScore2 = document.getElementById("total-score--2");
 const currentScore1 = document.getElementById("current-score--1");
 const currentScore2 = document.getElementById("current-score--2");
 
-const arrayOfSection = [
-  [player1, name1, totalScore1, currentScore1],
-  [player2, name2, totalScore2, currentScore2],
+let arrayOfCurrentScore = [];
+
+const arrayOfValue = [
+  [
+    1,
+    player1,
+    name1,
+    totalScore1,
+    currentScore1,
+    diceImage1,
+    rollDiceBTN1,
+    holdBTN1,
+  ],
+  [
+    2,
+    player2,
+    name2,
+    totalScore2,
+    currentScore2,
+    diceImage2,
+    rollDiceBTN2,
+    holdBTN2,
+  ],
 ];
 
 newGame();
@@ -26,19 +50,20 @@ function newGame() {
   player2.className = "player player--2 ";
   name1.textContent = "Player 1";
   name2.textContent = "Player 2";
-  totalScore1.textContent = 80;
-  totalScore2.textContent = 80;
+  totalScore1.textContent = 0;
+  totalScore2.textContent = 0;
   currentScore1.textContent = 0;
   currentScore2.textContent = 0;
-  diceImage.classList.add("hidden");
-  console.log("reset");
+  diceImage1.classList.add("hidden");
+  diceImage2.classList.add("hidden");
+  arrayOfCurrentScore = [];
 }
 
 function whoActive() {
   if (player1.classList.contains("player--active")) {
-    return arrayOfSection[0];
+    return arrayOfValue[0];
   } else if (player2.classList.contains("player--active")) {
-    return arrayOfSection[1];
+    return arrayOfValue[1];
   }
 }
 
@@ -48,43 +73,61 @@ function togglePlayer() {
 }
 
 function winnerYet() {
-  if (whoActive()[0].classList.contains("player--winner")) {
+  if (whoActive()[1].classList.contains("player--winner")) {
     return true;
   } else {
     return false;
   }
 }
 
+function resetCurrentScore() {
+  arrayOfCurrentScore = [];
+  whoActive()[4].textContent = 0;
+}
+
 newGameBTN.addEventListener("click", () => newGame());
 
-rollDiceBTN.addEventListener("click", () => {
+rollDiceBTN1.addEventListener("click", () => Dicing(arrayOfValue[0][0]));
+rollDiceBTN2.addEventListener("click", () => Dicing(arrayOfValue[1][0]));
+
+function Dicing(whomPush) {
   if (winnerYet()) return;
+  if (whoActive()[0] !== whomPush) return;
 
   const randomNumber = Number(Math.trunc(Math.random() * 6) + 1);
-  diceImage.src = `dice-${randomNumber}.png`;
-  diceImage.classList.remove("hidden");
+
+  whoActive()[5].src = `dice-${randomNumber}.png`;
+  whoActive()[5].classList.remove("hidden");
 
   if (randomNumber === 1) {
-    whoActive()[3].textContent = 0;
+    resetCurrentScore();
     togglePlayer();
   } else {
-    whoActive()[3].textContent =
-      Number(whoActive()[3].textContent) + randomNumber;
+    arrayOfCurrentScore.push(randomNumber);
+    let str = "";
+    for (let i = 0; i < arrayOfCurrentScore.length; i++)
+      str += ` + ${arrayOfCurrentScore[i]}`;
+    whoActive()[4].textContent = str;
   }
-});
+}
 
-holdBTN.addEventListener("click", () => {
+holdBTN1.addEventListener("click", () => holding(arrayOfValue[0][0]));
+holdBTN2.addEventListener("click", () => holding(arrayOfValue[1][0]));
+
+function holding(whomPush) {
   if (winnerYet()) return;
+  if (whoActive()[0] !== whomPush) return;
 
-  whoActive()[2].textContent =
-    Number(whoActive()[2].textContent) + Number(whoActive()[3].textContent);
+  whoActive()[3].textContent =
+    Number(whoActive()[3].textContent) +
+    arrayOfCurrentScore.reduce((partialSum, a) => partialSum + a, 0);
 
-  whoActive()[3].textContent = 0;
+  resetCurrentScore();
 
-  if (whoActive()[2].textContent >= 100) {
-    whoActive()[0].classList.add("player--winner");
+  if (whoActive()[3].textContent >= 100) {
+    whoActive()[1].classList.add("player--winner");
     return;
   }
 
   togglePlayer();
-});
+}
