@@ -124,7 +124,7 @@ function holding(whomPush) {
 
   resetCurrentScore();
 
-  if (whoActive()[3].textContent >= 100) {
+  if (whoActive()[3].textContent >= 50) {
     whoActive()[1].classList.add("player--winner");
     return;
   }

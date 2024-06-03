@@ -17,9 +17,20 @@ body {
   height: 100vh;
   color: #333;
   background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+  align-items: start;
   justify-content: center;
+}
+
+.description {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.description ol {
+  margin-left: 25px;
+  font-size: 18px;
 }
 
 /* LAYOUT */
