@@ -1,47 +1,40 @@
 "use strict";
 
-var firstName = "furiosa";
+/* // Primitive types
+let lastName = "Williams";
+let oldLastName = lastName;
 
-const benz = {
-  firstName: "Suppasan",
-  lastName: "Chaianantakul",
-  birthYear: 1993,
-  location: "thailand",
-  job: "polymath",
+lastName = "Devis";
 
-  calcAge: function () {
-    // This ของ function คือ Object ของผู้เรียกใช้ฟังก์ชั่น
-    console.log(2024 - this.birthYear);
+console.log(lastName, oldLastName);
 
-    const isMillenial = () => {
-      return this.birthYear >= 1981 && this.birthYear <= 1996;
-    };
-
-    console.log(isMillenial());
-  },
-
-  greet1: function () {
-    // This ของ function คือชี้ไปที่ Object ของผู้เรียกใช้ฟังก์ชั่น
-    console.log(`Hey ${this.firstName}`);
-  },
-
-  greet2: () => {
-    // This ของ () => คือชี้ไปที่ Window เฉพาะฉนั่นโดยสรุป ห้าม!! ใช้ () => เป็น Method
-    console.log(`Hey ${this.firstName}`);
-  },
+// Reference types
+const jessica = {
+  firstName: "Jessica",
+  lastName: "Williams",
+  age: 27,
 };
 
-benz.calcAge();
+const marriedJessica = jessica;
 
-benz.greet1();
-benz.greet2();
+marriedJessica.lastName = "Devis;";
 
-const addExpr = function (a, b) {
-  console.log(arguments);
-  return a + b;
+console.log(jessica.lastName);
+console.log(marriedJessica.lastName); */
+
+// Copy objects
+const jessica2 = {
+  firstName: "Jessica",
+  lastName: "Williams",
+  age: 27,
+  family: ["Alice", "Bob"],
 };
 
-addExpr(2, 5);
-addExpr(2, 5, 8, 9, 4);
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = "Devis";
 
-var addArrow = (a, b) => a + b;
+jessicaCopy.family.push("Mary");
+jessicaCopy.family.push("John");
+
+console.log("Before marriage:", jessica2);
+console.log("After marriage:", jessicaCopy);
