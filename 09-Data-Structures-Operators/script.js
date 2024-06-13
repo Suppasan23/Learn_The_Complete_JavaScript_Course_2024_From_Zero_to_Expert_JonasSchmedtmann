@@ -41,9 +41,56 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+
+  orderPasta: function (ing) {
+    console.log(
+      `Here is your delicious pasta with ${ing[0]},${ing[1]} and ${ing[2]}`
+    );
+  },
 };
 
-restaurant.orderDelivery({
+const newRestaurant = { foundIn: 1998, ...restaurant, founder: "Gutstave" };
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = "Ristorante Roma";
+
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+
+/* const ingredients = [
+  prompt("Let's make pasta! Ingredient 1?"),
+  prompt("Let's make pasta! Ingredient 2?"),
+  prompt("Let's make pasta! Ingredient 3?"),
+]; */
+
+/* restaurant.orderPasta(ingredients);
+
+const newMenu = [...restaurant.mainMenu, "Gnocci"];
+console.log(newMenu);
+
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// Joint 2 Arrays
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+
+// Iterables: array, strings, maps, sets. NOT object
+const str = "Suppasan";
+const letters = [...str, "", "S."];
+console.log(letters);
+console.log(letters[6]);
+
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const goodNewArr = [1, 2, ...arr];
+console.log(goodNewArr);
+console.log(...goodNewArr); */
+
+/* restaurant.orderDelivery({
   time: "22:30",
   address: "Via del sole, 21",
   mainIndex: 2,
@@ -53,7 +100,7 @@ restaurant.orderDelivery({
 restaurant.orderDelivery({
   address: "songkhla",
   starterIndex: 3,
-});
+}); */
 
 /* // Nested objects
 const {
